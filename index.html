@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Maa Vaishno Telecom | Mobile Repair & Store Meerut</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- AOS Library (animate on scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f9fafc;
+      color: #1f2937;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #e4e7ec;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #f97316;
+      border-radius: 12px;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+      z-index: 1000;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      animation: pulse-wa 1.5s infinite;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+      background-color: #20b859;
+    }
+    @keyframes pulse-wa {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+      70% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #0f172a, #1e293b, #f97316);
+      background-size: 200% 200%;
+      animation: gradientShift 10s ease infinite;
+      color: white;
+      padding: 2rem 1.5rem 4rem 1.5rem;
+      border-bottom-left-radius: 2rem;
+      border-bottom-right-radius: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "📱⚡🔧";
+      font-size: 220px;
+      opacity: 0.07;
+      position: absolute;
+      bottom: -50px;
+      right: -40px;
+      pointer-events: none;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
+    .logo span { color: #fbbf24; }
+    .tagline { font-size: 0.9rem; opacity: 0.85; margin-top: 4px; }
+    .hero-content { text-align: center; max-width: 800px; margin: 2rem auto 0; }
+    .hero-content h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 1rem; }
+    .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px;
+      border-radius: 40px; font-weight: 600; text-decoration: none; transition: 0.2s;
+    }
+    .btn-outline-light { background: transparent; border: 2px solid white; color: white; }
+    .btn-outline-light:hover { background: white; color: #f97316; transform: translateY(-3px); }
+    .btn-primary { background: #f97316; color: white; box-shadow: 0 5px 12px rgba(249,115,22,0.3); }
+    .btn-primary:hover { background: #ea580c; transform: translateY(-3px); }
+
+    .section { padding: 4rem 1.5rem; max-width: 1280px; margin: 0 auto; }
+    .section-title { text-align: center; font-size: 2rem; font-weight: 800; margin-bottom: 2rem; position: relative; width: 100%; }
+    .section-title:after { content: ''; display: block; width: 70px; height: 4px; background: #f97316; border-radius: 3px; margin: 12px auto 0; }
+
+    /* Services Grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+    .service-card {
+      background: white;
+      border-radius: 28px;
+      padding: 1.8rem 1.2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 15px 30px -12px rgba(0,0,0,0.08);
+      border: 1px solid rgba(249,115,22,0.15);
+      cursor: pointer;
+    }
+    .service-card:hover { transform: translateY(-10px); border-color: #f97316; }
+    .service-icon { font-size: 3rem; color: #f97316; margin-bottom: 1rem; }
+    .service-card h3 { font-size: 1.5rem; margin-bottom: 0.6rem; }
+
+    /* Phone showcase */
+    .phones-showcase { background: linear-gradient(120deg, #fff5eb, #fff0e5); border-radius: 2rem; padding: 2rem 1.5rem; margin: 2rem 0; }
+    .flex-cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; }
+    .phone-card { background: white; border-radius: 2rem; padding: 1.5rem; flex: 1; min-width: 220px; text-align: center; transition: 0.2s; border: 1px solid #ffe4cc; }
+    .badge { background: #f97316; color: white; padding: 5px 12px; border-radius: 40px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-top: 10px; }
+
+    /* Reviews & Testimonials */
+    .reviews-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .review-card {
+      background: white;
+      border-radius: 1.8rem;
+      padding: 1.5rem;
+      max-width: 320px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      border-left: 5px solid #f97316;
+    }
+    .stars { color: #fbbf24; margin: 10px 0; }
+    .review-text { font-style: italic; color: #374151; }
+
+    /* FAQ Section */
+    .faq-grid {
+      max-width: 800px;
+      margin: 2rem auto 0;
+    }
+    .faq-item {
+      background: white;
+      border-radius: 1.5rem;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      border: 1px solid #e5e7eb;
+    }
+    .faq-question {
+      background: white;
+      padding: 1.2rem 1.5rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: 0.2s;
+    }
+    .faq-question i { color: #f97316; transition: 0.2s; }
+    .faq-answer {
+      max-height: 0;
+      padding: 0 1.5rem;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.2s;
+      color: #4b5563;
+      border-top: 0px solid #ffe4cc;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+      padding: 0 1.5rem 1.2rem 1.5rem;
+      border-top: 1px solid #ffe4cc;
+    }
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+
+    /* Contact Form */
+    .contact-form-wrapper {
+      background: #1e293b;
+      border-radius: 2rem;
+      padding: 2rem;
+      color: white;
+      margin-top: 2rem;
+    }
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .form-group {
+      flex: 1;
+      min-width: 180px;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 50px;
+      border: none;
+      font-family: inherit;
+      outline: none;
+      background: #f1f5f9;
+    }
+    .form-group textarea {
+      border-radius: 24px;
+      resize: vertical;
+    }
+    .submit-btn {
+      background: #f97316;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .submit-btn:hover { background: #ea580c; transform: scale(1.02); }
+
+    /* Modal (Booking) */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+    .modal-content {
+      background: white;
+      max-width: 500px;
+      width: 90%;
+      border-radius: 2rem;
+      padding: 2rem;
+      position: relative;
+      animation: slideUp 0.3s;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .close-modal {
+      position: absolute;
+      top: 18px; right: 22px;
+      font-size: 28px;
+      cursor: pointer;
+      color: #f97316;
+    }
+    .modal h3 { margin-bottom: 1rem; }
+
+    .contact-location {
+      background: #1e293b;
+      border-radius: 2rem;
+      padding: 2rem;
+      color: white;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+    .info-block { flex: 1; min-width: 200px; }
+    .call-link {
+      background: #f97316;
+      padding: 10px 18px;
+      border-radius: 50px;
+      color: white;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    footer { background: #0f172a; color: #cbd5e1; text-align: center; padding: 1.8rem; border-radius: 1.5rem 1.5rem 0 0; margin-top: 2rem; }
+    @media (max-width: 650px) { .hero-content h2 { font-size: 1.7rem; } .whatsapp-float { width: 52px; height: 52px; font-size: 28px; } }
+  </style>
+</head>
+<body>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/919997372082?text=Hello%20Maa%20Vaishno%20Telecom%2C%20I%20need%20mobile%20repair%20%2F%20service%20assistance." class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="nav" data-aos="fade-down">
+    <div class="logo"><h1>MAA VAISHNO <span>TELECOM</span></h1><div class="tagline"><i class="fas fa-map-marker-alt"></i> Near Anand Hospital, Meerut</div></div>
+    <div class="contact-mini"><i class="fas fa-phone-alt"></i> <strong>9997344418</strong></div>
+  </div>
+  <div class="hero-content" data-aos="fade-up">
+    <h2>Your Trusted Mobile Care Partner</h2>
+    <p>📱 Expert Phone Repair • Hardware • Software • New & 2nd Hand Phones • Premium Accessories</p>
+    <div class="btn-group">
+      <a href="#services" class="btn btn-primary"><i class="fas fa-tools"></i> Explore Services</a>
+      <a href="tel:9997344418" class="btn btn-outline-light"><i class="fas fa-phone"></i> Call Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- Services -->
+<div class="section" id="services">
+  <h2 class="section-title" data-aos="fade-right">What We Fix & Sell</h2>
+  <div class="services-grid">
+    <div class="service-card" data-aos="zoom-in" data-service="Phone Repair">
+      <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+      <h3>Phone Repair</h3>
+      <p>Fast & reliable repair for all brands — from screen to battery issues.</p>
+    </div>
+    <div class="service-card" data-aos="zoom-in" data-service="Hardware Repair">
+      <div class="service-icon"><i class="fas fa-microchip"></i></div>
+      <h3>Hardware</h3>
+      <p>Motherboard, connectors, charging ports, speakers & more.</p>
+    </div>
+    <div class="service-card" data-aos="zoom-in" data-service="Software Service">
+      <div class="service-icon"><i class="fas fa-code"></i></div>
+      <h3>Software</h3>
+      <p>OS upgrade, virus removal, unlocking, data recovery & glitch fix.</p>
+    </div>
+    <div class="service-card" data-aos="zoom-in" data-service="Touch Display Replacement">
+      <div class="service-icon"><i class="fas fa-tablet-alt"></i></div>
+      <h3>Touch Display</h3>
+      <p>Premium quality LCD/OLED display replacement with warranty.</p>
+    </div>
+    <div class="service-card" data-aos="zoom-in" data-service="Charger & Mobile Cover">
+      <div class="service-icon"><i class="fas fa-charging-station"></i></div>
+      <h3>Charger & Covers</h3>
+      <p>Original & durable chargers, trendy back covers & tempered glass.</p>
+    </div>
+    <div class="service-card" data-aos="zoom-in" data-service="New/2nd Hand Phone">
+      <div class="service-icon"><i class="fas fa-sim-card"></i></div>
+      <h3>New / 2nd Hand Phones</h3>
+      <p>Latest models & quality refurbished phones at best price.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Phone showcase -->
+<div class="section" style="padding-top:0;">
+  <div class="phones-showcase" data-aos="flip-up">
+    <h2 class="section-title" style="margin-bottom:0.5rem;">📱 New & Second Hand Phones</h2>
+    <p style="text-align:center;">Best deals in Meerut | Certified quality | Exchange offers</p>
+    <div class="flex-cards">
+      <div class="phone-card"><i class="fas fa-box-open"></i><h3>✨ Brand New</h3><p>Samsung, Apple, OnePlus, Xiaomi & more.</p><span class="badge">Available Now</span></div>
+      <div class="phone-card"><i class="fas fa-recycle"></i><h3>🔄 Second Hand</h3><p>Quality checked, fully functional, affordable price.</p><span class="badge">Visit Store</span></div>
+      <div class="phone-card"><i class="fas fa-hand-holding-usd"></i><h3>💰 Best Price</h3><p>Also buy your old phone at competitive rates.</p><span class="badge">Sell Old Phone</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Customer Reviews Section -->
+<div class="section">
+  <h2 class="section-title" data-aos="fade-right">⭐ Customer Reviews</h2>
+  <div class="reviews-grid" data-aos="fade-up">
+    <div class="review-card"><div class="stars">★★★★★</div><p class="review-text">"Best repair shop in Meerut! Fixed my display within 2 hours. Genuine parts."</p><h4>- Rahul Sharma</h4></div>
+    <div class="review-card"><div class="stars">★★★★★</div><p class="review-text">"Got a second hand iPhone in great condition at reasonable price. Highly recommended."</p><h4>- Neha Verma</h4></div>
+    <div class="review-card"><div class="stars">★★★★☆</div><p class="review-text">"Good service and polite staff. WhatsApp support is super responsive."</p><h4>- Amit Kumar</h4></div>
+  </div>
+</div>
+
+<!-- FAQ Section -->
+<div class="section">
+  <h2 class="section-title" data-aos="fade-right">❓ Frequently Asked Questions</h2>
+  <div class="faq-grid" data-aos="fade-up">
+    <div class="faq-item"><div class="faq-question">Do you provide doorstep service? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Yes, we offer limited doorstep pickup/delivery in Meerut city. Contact us on WhatsApp for details.</div></div>
+    <div class="faq-item"><div class="faq-question">How long does a typical repair take? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Most screen and battery repairs take 1-2 hours. Major hardware issues might take 24 hours.</div></div>
+    <div class="faq-item"><div class="faq-question">Do you sell original chargers & covers? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Absolutely! We have a wide range of original and high-quality third-party accessories.</div></div>
+    <div class="faq-item"><div class="faq-question">Can I exchange my old phone for a new one? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Yes, we provide exchange offers on both new and refurbished phones.</div></div>
+  </div>
+</div>
+
+<!-- Contact & Booking Form -->
+<div class="section">
+  <div class="contact-form-wrapper" data-aos="zoom-in-up">
+    <h3 style="margin-bottom: 1rem;"><i class="fas fa-calendar-check"></i> Book a Service / Quick Query</h3>
+    <form id="serviceForm">
+      <div class="form-row">
+        <div class="form-group"><input type="text" id="name" placeholder="Your Name *" required></div>
+        <div class="form-group"><input type="tel" id="mobile" placeholder="Mobile Number *" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><select id="serviceType"><option value="Phone Repair">Phone Repair</option><option value="Hardware">Hardware</option><option value="Software">Software</option><option value="Display Replacement">Display Replacement</option><option value="Buy Phone">Buy New/2nd Hand</option><option value="Accessories">Charger/Cover</option></select></div>
+        <div class="form-group"><input type="text" id="brandModel" placeholder="Phone Brand / Model (optional)"></div>
+      </div>
+      <div class="form-group"><textarea rows="2" id="message" placeholder="Describe issue or inquiry..."></textarea></div>
+      <button type="submit" class="submit-btn"><i class="fab fa-whatsapp"></i> Send & Get Response on WhatsApp</button>
+    </form>
+    <p style="font-size:0.8rem; margin-top:1rem;">We’ll reply on WhatsApp within 15 minutes.</p>
+  </div>
+</div>
+
+<!-- Location & Contact Info -->
+<div class="section">
+  <div class="contact-location" data-aos="zoom-in-up">
+    <div class="info-block"><i class="fas fa-map-pin"></i><h3>Visit Our Shop</h3><p><strong>📍 Near Anand Hospital, Meerut</strong><br> Landmark: Opposite City Square, easily accessible.</p><p><i class="far fa-clock"></i> Mon-Sat 10AM–8PM | Sun 11AM–5PM</p></div>
+    <div class="info-block"><i class="fas fa-phone-alt"></i><h3>Call / WhatsApp</h3><p><strong>📞 9997344418</strong> (Call)</p><p><strong>📱 9997372082</strong> (WhatsApp)</p><div class="call-buttons"><a href="tel:9997344418" class="call-link"><i class="fas fa-phone"></i> Call Now</a><a href="https://wa.me/919997372082?text=Hi%20Maa%20Vaishno%20Telecom%2C%20I%20need%20mobile%20repair%20services." target="_blank" class="call-link" style="background:#128C7E;"><i class="fab fa-whatsapp"></i> WhatsApp</a></div></div>
+    <div class="info-block"><i class="fas fa-store"></i><h3>Why Choose Us?</h3><p>✔️ 10+ years experience<br>✔️ Genuine spare parts<br>✔️ Quick turnaround<br>✔️ Free checkup estimate</p></div>
+  </div>
+</div>
+
+<!-- Modal for Quick Booking -->
+<div id="bookingModal" class="modal">
+  <div class="modal-content"><span class="close-modal">&times;</span><h3><i class="fas fa-concierge-bell"></i> Request Service</h3><p>Service: <strong id="modalServiceName">Repair</strong></p><p>Share via WhatsApp to confirm booking instantly.</p><a href="#" id="modalWhatsappLink" target="_blank" class="btn btn-primary" style="margin-top:1rem; display:inline-block;"><i class="fab fa-whatsapp"></i> Proceed on WhatsApp</a></div>
+</div>
+
+<footer>
+  <p>© 2025 Maa Vaishno Telecom — Near Anand Hospital, Meerut | Repair | New & Second Hand Phones</p>
+  <p><i class="fas fa-phone"></i> 9997344418 &nbsp;|&nbsp; <i class="fab fa-whatsapp"></i> 9997372082</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 800, once: true, offset: 120 });
+
+  // FAQ Toggle
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const parent = q.parentElement;
+      parent.classList.toggle('active');
+    });
+  });
+
+  // Modal logic for service cards
+  const modal = document.getElementById('bookingModal');
+  const modalServiceSpan = document.getElementById('modalServiceName');
+  const modalWhatsappLink = document.getElementById('modalWhatsappLink');
+  const closeModal = document.querySelector('.close-modal');
+
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const serviceName = card.getAttribute('data-service') || card.querySelector('h3')?.innerText || 'Service';
+      modalServiceSpan.innerText = serviceName;
+      const waMsg = `Hello Maa Vaishno Telecom, I am interested in ${serviceName}. Please share details.`;
+      modalWhatsappLink.href = `https://wa.me/919997372082?text=${encodeURIComponent(waMsg)}`;
+      modal.style.display = 'flex';
+    });
+  });
+  closeModal.onclick = () => modal.style.display = 'none';
+  window.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
+
+  // Contact form handler -> redirect to WhatsApp with details
+  const serviceForm = document.getElementById('serviceForm');
+  serviceForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const serviceType = document.getElementById('serviceType').value;
+    const brandModel = document.getElementById('brandModel').value;
+    const message = document.getElementById('message').value;
+    if (!name || !mobile) {
+      alert('Please enter your name and mobile number');
+      return;
+    }
+    let fullMsg = `📱 *New Service Request* 📱%0A%0A*Name:* ${name}%0A*Mobile:* ${mobile}%0A*Service:* ${serviceType}%0A*Phone:* ${brandModel || 'Not specified'}%0A*Message:* ${message || 'No additional message'}%0A%0APlease contact me.`;
+    const waUrl = `https://wa.me/919997372082?text=${fullMsg}`;
+    window.open(waUrl, '_blank');
+    serviceForm.reset();
+    alert('Request sent! We will respond on WhatsApp shortly.');
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href').substring(1);
+      if(targetId && document.getElementById(targetId)) {
+        e.preventDefault();
+        document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
